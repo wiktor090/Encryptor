@@ -51,11 +51,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MV Boli", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(81, 25);
+            this.label1.Location = new System.Drawing.Point(66, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 28);
+            this.label1.Size = new System.Drawing.Size(179, 28);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Podaj Hasło ";
+            this.label1.Text = "Enter Password";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // haslo
@@ -87,7 +87,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "login";
-            this.Text = "login";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -28,13 +28,13 @@ namespace Szyfrator_9000
             if (haslo.Text == password)
             {
                 Console.WriteLine("Sukcess");
-                MessageBox.Show("Zalogowano", "Sukcess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Logined", "Sukcess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 new Szyfrator().Show();
                 this.Hide();
             }
             else
             {
-                DialogResult result = MessageBox.Show("Puk Puk kto tam ZŁE HASŁO", "Hasło było złe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult result = MessageBox.Show("Wrong Password Try Again", "Wrong Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (result == DialogResult.OK)
                 {
                     this.Close();

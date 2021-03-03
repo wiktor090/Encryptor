@@ -29,10 +29,7 @@ namespace Szyfrator_9000
 
         List<password> passwords = new List<password>();
 
-        private Panel buttonPanel = new Panel();
-        //private DataGridView passwordsDataGridView = new DataGridView();
-        private Button addNewRowButton = new Button();
-        private Button deleteRowButton = new Button();
+        
 
         private int offset;
         int index = 0;
@@ -40,7 +37,6 @@ namespace Szyfrator_9000
         public Szyfrator()
         {
             InitializeComponent();
-            SetupLayout();
             SetupDataGridView();
         }
 
@@ -206,42 +202,9 @@ namespace Szyfrator_9000
             }
         }
 
-        private void addNewRowButton_Click(object sender, EventArgs e)
-        {
-            index += 1;
-            this.passwordsDataGridView.Rows.Add(index.ToString());
-        }
+       
 
-        private void deleteRowButton_Click(object sender, EventArgs e)
-        {
-            if (this.passwordsDataGridView.SelectedRows.Count > 0 &&
-                this.passwordsDataGridView.SelectedRows[0].Index !=
-                this.passwordsDataGridView.Rows.Count - 1)
-            {
-                this.passwordsDataGridView.Rows.RemoveAt(
-                    this.passwordsDataGridView.SelectedRows[0].Index);
-            }
-        }
-
-        private void SetupLayout()
-        {
-            //this.Size = new Size(600, 500);
-
-            addNewRowButton.Text = "Dodal Kolumnę";
-            addNewRowButton.Location = new Point(10, 10);
-            addNewRowButton.Click += new EventHandler(addNewRowButton_Click);
-
-            deleteRowButton.Text = "Usuń Kolumnę Row";
-            deleteRowButton.Location = new Point(100, 10);
-            deleteRowButton.Click += new EventHandler(deleteRowButton_Click);
-
-            buttonPanel.Controls.Add(addNewRowButton);
-            buttonPanel.Controls.Add(deleteRowButton);
-            buttonPanel.Height = 50;
-            buttonPanel.Dock = DockStyle.Bottom;
-
-            this.Controls.Add(this.buttonPanel);
-        }
+    
 
         private void SetupDataGridView()
         {
@@ -333,6 +296,15 @@ namespace Szyfrator_9000
                 }
                 //MessageBox.Show("subForm has closed");
             };
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (this.passwordsDataGridView.SelectedRows.Count > 0)
+            {
+                this.passwordsDataGridView.Rows.RemoveAt(
+                    this.passwordsDataGridView.SelectedRows[0].Index);
+            }
         }
 
         string getdata()

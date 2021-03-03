@@ -33,7 +33,6 @@
             this.zaszyfruj = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.zapisz = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.passwordsDataGridView = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nazwausługi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +42,7 @@
             this.HiddenPWD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dodaj = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +50,7 @@
             // 
             this.zaszyfruj.BackColor = System.Drawing.SystemColors.GrayText;
             this.zaszyfruj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.zaszyfruj.Location = new System.Drawing.Point(433, 314);
+            this.zaszyfruj.Location = new System.Drawing.Point(586, 349);
             this.zaszyfruj.Name = "zaszyfruj";
             this.zaszyfruj.Size = new System.Drawing.Size(92, 40);
             this.zaszyfruj.TabIndex = 1;
@@ -73,23 +73,13 @@
             // 
             this.zapisz.BackColor = System.Drawing.SystemColors.GrayText;
             this.zapisz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.zapisz.Location = new System.Drawing.Point(170, 314);
+            this.zapisz.Location = new System.Drawing.Point(30, 349);
             this.zapisz.Name = "zapisz";
             this.zapisz.Size = new System.Drawing.Size(92, 40);
             this.zapisz.TabIndex = 3;
             this.zapisz.Text = "Save";
             this.zapisz.UseVisualStyleBackColor = false;
             this.zapisz.Click += new System.EventHandler(this.zapisz_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(627, 327);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "JSon Nugget Tester";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // passwordsDataGridView
             // 
@@ -117,6 +107,7 @@
             this.passwordsDataGridView.Location = new System.Drawing.Point(12, 113);
             this.passwordsDataGridView.Name = "passwordsDataGridView";
             this.passwordsDataGridView.RowHeadersVisible = false;
+            this.passwordsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.passwordsDataGridView.Size = new System.Drawing.Size(690, 171);
             this.passwordsDataGridView.TabIndex = 6;
             this.passwordsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.passwordsDataGridView_CellClick);
@@ -164,7 +155,7 @@
             // 
             this.Dodaj.BackColor = System.Drawing.SystemColors.GrayText;
             this.Dodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Dodaj.Location = new System.Drawing.Point(621, 356);
+            this.Dodaj.Location = new System.Drawing.Point(30, 290);
             this.Dodaj.Name = "Dodaj";
             this.Dodaj.Size = new System.Drawing.Size(92, 40);
             this.Dodaj.TabIndex = 7;
@@ -172,22 +163,34 @@
             this.Dodaj.UseVisualStyleBackColor = false;
             this.Dodaj.Click += new System.EventHandler(this.Dodaj_Click);
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.BackColor = System.Drawing.SystemColors.GrayText;
+            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DeleteButton.Location = new System.Drawing.Point(586, 290);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(92, 40);
+            this.DeleteButton.TabIndex = 8;
+            this.DeleteButton.Text = "Delete ";
+            this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // Szyfrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(714, 401);
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.Dodaj);
             this.Controls.Add(this.passwordsDataGridView);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.zapisz);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.zaszyfruj);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Szyfrator";
-            this.Text = "Szyfrator 9000";
+            this.Text = "Szyfrator";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Szyfrator_FormClosed);
             this.Load += new System.EventHandler(this.Szyfrator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).EndInit();
@@ -200,7 +203,6 @@
         private System.Windows.Forms.Button zaszyfruj;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button zapisz;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView passwordsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nazwausługi;
@@ -210,6 +212,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HiddenPWD;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
         private System.Windows.Forms.Button Dodaj;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }
 
