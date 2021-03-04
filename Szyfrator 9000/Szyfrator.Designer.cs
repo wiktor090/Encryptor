@@ -61,12 +61,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 44.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(-11, 9);
+            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(19, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(787, 73);
+            this.label1.Size = new System.Drawing.Size(690, 66);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Szyfrator By Wiktor0909";
+            this.label1.Text = "Encryptor By Wiktor090";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // zapisz
