@@ -1,2 +1,5 @@
-# Szyfrator-9000-Beta
-Password To "Szyfrator 9000" is = weksel
+# Encryptor
+Encryptor is a program written by me and the Group
+Which is led by "Scooon" We fix bugs and fix bugs every week on Wednesdays
+
+Password To "Encryptor" is = weksel
