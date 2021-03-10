@@ -2,7 +2,18 @@
 {
     public class password
     {
+        private static string pwd = "";
 
+        public static string getPassword()
+        {
+            return pwd;
+        }
+
+        public static bool setPassword(string pass)
+        {
+            pwd = pass;
+            return true;
+        }
         public int id 
         {
             get;

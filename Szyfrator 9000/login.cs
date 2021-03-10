@@ -12,6 +12,8 @@ namespace Szyfrator_9000
 {
     public partial class login : Form
     {
+        private static string pass;
+
         public login()
         {
             InitializeComponent();
@@ -24,24 +26,15 @@ namespace Szyfrator_9000
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string password = "weksel";
-            if (haslo.Text == password)
-            {
-                Console.WriteLine("Sukcess");
-                MessageBox.Show("Logined", "Sukcess", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                new Szyfrator().Show();
-                this.Hide();
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("Wrong Password Try Again", "Wrong Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (result == DialogResult.OK)
-                {
-                    this.Close();
-                }
-            }
+            pass = haslo.Text;
+            this.Close();
         }
 
+        public static string getPassword()
+        {
+            return pass;
+
+        }
         private void login_Load(object sender, EventArgs e)
         {
 
@@ -50,6 +43,11 @@ namespace Szyfrator_9000
         private void haslo_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new newPassword().Show();
         }
     }
 }

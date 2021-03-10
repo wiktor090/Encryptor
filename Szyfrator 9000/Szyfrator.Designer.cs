@@ -190,7 +190,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Szyfrator";
-            this.Text = "Szyfrator";
+            this.Text = "Encryptor";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Szyfrator_FormClosed);
             this.Load += new System.EventHandler(this.Szyfrator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.passwordsDataGridView)).EndInit();

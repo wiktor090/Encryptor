@@ -75,9 +75,10 @@ namespace Szyfrator_9000
             // 
             this.Progressbar.ForeColor = System.Drawing.Color.Cyan;
             this.Progressbar.Location = new System.Drawing.Point(16, 204);
+            this.Progressbar.MarqueeAnimationSpeed = 250;
             this.Progressbar.Name = "Progressbar";
             this.Progressbar.Size = new System.Drawing.Size(302, 19);
-            this.Progressbar.Step = 3;
+            this.Progressbar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.Progressbar.TabIndex = 3;
             // 
             // NoweHasloTextBox
@@ -99,20 +100,21 @@ namespace Szyfrator_9000
             this.PowtozNoweHasloTextBox.Size = new System.Drawing.Size(302, 20);
             this.PowtozNoweHasloTextBox.TabIndex = 5;
             this.PowtozNoweHasloTextBox.UseSystemPasswordChar = true;
-            this.PowtozNoweHasloTextBox.TextChanged += new System.EventHandler(this.PowtozNoweHasloTextBox_TextChanged);
             // 
             // ShowPWD
             // 
             this.ShowPWD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowPWD.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ShowPWD.Location = new System.Drawing.Point(16, 251);
+            this.ShowPWD.Location = new System.Drawing.Point(12, 243);
             this.ShowPWD.Name = "ShowPWD";
-            this.ShowPWD.Size = new System.Drawing.Size(302, 23);
+            this.ShowPWD.Size = new System.Drawing.Size(302, 36);
             this.ShowPWD.TabIndex = 6;
             this.ShowPWD.Text = "See Passwords";
             this.ShowPWD.UseVisualStyleBackColor = false;
+            this.ShowPWD.Click += new System.EventHandler(this.ShowPWD_Click);
             this.ShowPWD.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ShowPWD_MouseDown);
             this.ShowPWD.MouseLeave += new System.EventHandler(this.ShowPWD_MouseLeave);
+            this.ShowPWD.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ShowPWD_MouseUp);
             // 
             // label4
             // 
@@ -128,9 +130,9 @@ namespace Szyfrator_9000
             // 
             this.SetPwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SetPwd.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.SetPwd.Location = new System.Drawing.Point(16, 293);
+            this.SetPwd.Location = new System.Drawing.Point(12, 285);
             this.SetPwd.Name = "SetPwd";
-            this.SetPwd.Size = new System.Drawing.Size(302, 23);
+            this.SetPwd.Size = new System.Drawing.Size(302, 35);
             this.SetPwd.TabIndex = 8;
             this.SetPwd.Text = "Set New Password";
             this.SetPwd.UseVisualStyleBackColor = false;

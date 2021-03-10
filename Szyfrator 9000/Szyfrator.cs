@@ -70,7 +70,22 @@ namespace Szyfrator_9000
                 }
             }
 
-            string json = deszyfruj(content);
+            string input = deszyfruj(content);
+            string pass = input.Substring(0, input.IndexOf("|password|"));
+                string json = input.Substring(input.IndexOf("|password|") + 10);
+            if (pass.Length > 0)
+            {
+                login checkPWD = new login();
+                checkPWD.Show();
+                checkPWD.FormClosed += delegate
+                  {
+                      if (login.getPassword() == pass)
+                      {
+                         password.setPassword(pass);
+                          PopulateDataGridView(passwords);
+                      } //else dopisać
+                  };
+            }
             passwords = JsonConvert.DeserializeObject<List<password>>(json);
             PopulateDataGridView(passwords);
 
@@ -105,7 +120,8 @@ namespace Szyfrator_9000
 
 
             //byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
-            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(getdata()));
+            string json = password.getPassword() + "|password|" + getdata();
+            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
 
             Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -284,6 +300,27 @@ namespace Szyfrator_9000
         }
 
         private void Dodaj_Click(object sender, EventArgs e)
+        {
+            if (password.getPassword() == "")
+            {
+                newPassword newPWD = new newPassword();
+                newPWD.Show();
+                newPWD.FormClosed += delegate
+                {
+                    password.setPassword(newPassword.getPassword());
+                    if (password.getPassword() != "")
+                    {
+                        additem();
+                    }
+                };
+            }
+            else
+            {
+                additem();
+            }
+        }
+
+        private void additem()
         {
             AddWindow add = new AddWindow();
             add.Show();
