@@ -100,6 +100,7 @@
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(401, 23);
             this.LoginTextBox.TabIndex = 3;
+            this.LoginTextBox.TextChanged += new System.EventHandler(this.LoginTextBox_TextChanged);
             // 
             // haslolabel
             // 

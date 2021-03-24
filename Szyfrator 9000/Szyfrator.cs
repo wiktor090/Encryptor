@@ -66,29 +66,36 @@ namespace Szyfrator_9000
                         content = reader.ReadToEnd();
                     }
 
+                    string input = deszyfruj(content);
+                    try { 
+                    string pass = input.Substring(0, input.IndexOf("|password|"));
+                    string json = input.Substring(input.IndexOf("|password|") + 10);
+                    if (pass.Length > 0)
+                    {
+                        login checkPWD = new login();
+                        checkPWD.Show();
+                        checkPWD.FormClosed += delegate
+                          {
+                              if (password.checkPassword(login.getPassword(), pass))
+                              {
+                                  password.setPassword(pass);
+                                  passwords = JsonConvert.DeserializeObject<List<password>>(json);
+                                  PopulateDataGridView(passwords);
+                              }
+                              else
+                              {
+                                  MessageBox.Show("Wrong Password try Again", "Wrong Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                              }
 
+                          };
+                    } }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("This Isn't A Encryptor File !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
             }
-
-            string input = deszyfruj(content);
-            string pass = input.Substring(0, input.IndexOf("|password|"));
-                string json = input.Substring(input.IndexOf("|password|") + 10);
-            if (pass.Length > 0)
-            {
-                login checkPWD = new login();
-                checkPWD.Show();
-                checkPWD.FormClosed += delegate
-                  {
-                      if (login.getPassword() == pass)
-                      {
-                         password.setPassword(pass);
-                          PopulateDataGridView(passwords);
-                      } //else dopisać
-                  };
-            }
-            passwords = JsonConvert.DeserializeObject<List<password>>(json);
-            PopulateDataGridView(passwords);
-
 
 
         }
@@ -117,30 +124,34 @@ namespace Szyfrator_9000
 
         private void zapisz_Click(object sender, EventArgs e)
         {
-
-
-            //byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
-            string json = password.getPassword() + "|password|" + getdata();
-            byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
-
-            Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-            saveFileDialog1.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|*.txt)|*.txt|Wszystkie Pliki (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (password.getPassword() != "")
             {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
+
+                //byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
+                string json = password.getPassword() + "|password|" + getdata();
+                byte[] byteArray = Encoding.UTF8.GetBytes(szyfruj(json));
+
+                Stream myStream;
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+                saveFileDialog1.Filter = "Pliki Szyfratora (*.szyfrator)|*.szyfrator|*.txt)|*.txt|Wszystkie Pliki (*.*)|*.*";
+                saveFileDialog1.FilterIndex = 1;
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    myStream.Write(byteArray, 0, byteArray.Length);
-                    myStream.Close();
+                    if ((myStream = saveFileDialog1.OpenFile()) != null)
+                    {
+                        myStream.Write(byteArray, 0, byteArray.Length);
+                        myStream.Close();
+                    }
                 }
+
             }
-
-
-
+            else
+            {
+                MessageBox.Show("You can't Save Empty file!", "Empty file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -307,7 +318,7 @@ namespace Szyfrator_9000
                 newPWD.Show();
                 newPWD.FormClosed += delegate
                 {
-                    password.setPassword(newPassword.getPassword());
+                    password.sethash(newPassword.getPassword());
                     if (password.getPassword() != "")
                     {
                         additem();
@@ -337,10 +348,24 @@ namespace Szyfrator_9000
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            
+            
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
             if (this.passwordsDataGridView.SelectedRows.Count > 0)
             {
-                this.passwordsDataGridView.Rows.RemoveAt(
-                    this.passwordsDataGridView.SelectedRows[0].Index);
+                DialogResult zapytanie = MessageBox.Show("Are you Wan't To Delete ?", "Deleting", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (zapytanie == DialogResult.Yes)
+                {
+                    this.passwordsDataGridView.Rows.RemoveAt(
+                        this.passwordsDataGridView.SelectedRows[0].Index);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Set Passwords what you wan't to delete","Error Deleting",MessageBoxButtons.OK , MessageBoxIcon.Error);
             }
         }
 

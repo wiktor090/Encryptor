@@ -85,5 +85,10 @@ namespace Szyfrator_9000
             PasswordTextBox.UseSystemPasswordChar = true;
             ShowPWD.Text = "Show Password";
         }
+
+        private void LoginTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
